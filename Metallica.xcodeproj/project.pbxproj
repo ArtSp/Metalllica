@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		606B190328574169004355DC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190228574169004355DC /* Types.swift */; };
+		606B190528574BF9004355DC /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190428574BF9004355DC /* Node.swift */; };
+		606B190728574CED004355DC /* CoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190628574CED004355DC /* CoreScene.swift */; };
+		606B190B28574D79004355DC /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190A28574D79004355DC /* Plane.swift */; };
+		606B190D2857529C004355DC /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190C2857529C004355DC /* Primitive.swift */; };
+		606B190F2857564E004355DC /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190E2857564E004355DC /* Renderer.swift */; };
+		606B19112857571B004355DC /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B19102857571B004355DC /* BasicScene.swift */; };
+		606B1913285757B8004355DC /* TempScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B1912285757B8004355DC /* TempScene.swift */; };
+		606B191528575802004355DC /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B191428575802004355DC /* Triangle.swift */; };
+		606B191828576096004355DC /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B191728576096004355DC /* Maths.swift */; };
 		6097243D285707DF00EDCFC4 /* MetallicaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097243C285707DF00EDCFC4 /* MetallicaApp.swift */; };
 		6097243F285707DF00EDCFC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097243E285707DF00EDCFC4 /* ContentView.swift */; };
 		60972441285707E100EDCFC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60972440285707E100EDCFC4 /* Assets.xcassets */; };
@@ -20,6 +29,15 @@
 
 /* Begin PBXFileReference section */
 		606B190228574169004355DC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		606B190428574BF9004355DC /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		606B190628574CED004355DC /* CoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreScene.swift; sourceTree = "<group>"; };
+		606B190A28574D79004355DC /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		606B190C2857529C004355DC /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
+		606B190E2857564E004355DC /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		606B19102857571B004355DC /* BasicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
+		606B1912285757B8004355DC /* TempScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempScene.swift; sourceTree = "<group>"; };
+		606B191428575802004355DC /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		606B191728576096004355DC /* Maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
 		60972439285707DF00EDCFC4 /* Metallica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metallica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6097243C285707DF00EDCFC4 /* MetallicaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetallicaApp.swift; sourceTree = "<group>"; };
 		6097243E285707DF00EDCFC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +60,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		606B190828574D19004355DC /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				606B190628574CED004355DC /* CoreScene.swift */,
+				606B19102857571B004355DC /* BasicScene.swift */,
+				606B1912285757B8004355DC /* TempScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		606B190928574D25004355DC /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				606B190428574BF9004355DC /* Node.swift */,
+				606B190C2857529C004355DC /* Primitive.swift */,
+				606B190A28574D79004355DC /* Plane.swift */,
+				606B191428575802004355DC /* Triangle.swift */,
+			);
+			path = Node;
+			sourceTree = "<group>";
+		};
+		606B191628576073004355DC /* Maths */ = {
+			isa = PBXGroup;
+			children = (
+				606B191728576096004355DC /* Maths.swift */,
+			);
+			path = Maths;
+			sourceTree = "<group>";
+		};
 		60972430285707DF00EDCFC4 = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +111,12 @@
 				6097243C285707DF00EDCFC4 /* MetallicaApp.swift */,
 				6097243E285707DF00EDCFC4 /* ContentView.swift */,
 				609724502857094C00EDCFC4 /* MetalView.swift */,
-				606B190228574169004355DC /* Types.swift */,
+				606B190E2857564E004355DC /* Renderer.swift */,
+				606B191628576073004355DC /* Maths */,
+				606B190828574D19004355DC /* Scene */,
+				606B190928574D25004355DC /* Node */,
 				609724522857097C00EDCFC4 /* Shaders.metal */,
+				606B190228574169004355DC /* Types.swift */,
 				60972440285707E100EDCFC4 /* Assets.xcassets */,
 				60972442285707E100EDCFC4 /* Preview Content */,
 			);
@@ -159,10 +210,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				609724532857097C00EDCFC4 /* Shaders.metal in Sources */,
+				606B191528575802004355DC /* Triangle.swift in Sources */,
 				609724512857094C00EDCFC4 /* MetalView.swift in Sources */,
+				606B190B28574D79004355DC /* Plane.swift in Sources */,
 				6097243F285707DF00EDCFC4 /* ContentView.swift in Sources */,
+				606B190D2857529C004355DC /* Primitive.swift in Sources */,
+				606B190528574BF9004355DC /* Node.swift in Sources */,
+				606B190728574CED004355DC /* CoreScene.swift in Sources */,
 				606B190328574169004355DC /* Types.swift in Sources */,
+				606B190F2857564E004355DC /* Renderer.swift in Sources */,
 				6097243D285707DF00EDCFC4 /* MetallicaApp.swift in Sources */,
+				606B191828576096004355DC /* Maths.swift in Sources */,
+				606B1913285757B8004355DC /* TempScene.swift in Sources */,
+				606B19112857571B004355DC /* BasicScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

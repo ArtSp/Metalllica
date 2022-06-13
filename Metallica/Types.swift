@@ -3,13 +3,13 @@
 //  Created by Artjoms Spole on 13/06/2022.
 //
 
-import Foundation
+import MetalKit
 
 struct Vertex {
     var position: SIMD3<Float>
     var color: SIMD4<Float>
 }
 
-struct Constants {
-    var animateBy: Float = 0.5
+struct ModelConstants {
+    var modelMatrix = matrix_identity_float4x4
 }

@@ -12,6 +12,7 @@ struct ContentView: View {
             MetalView()
         }
         .ignoresSafeArea()
+        .aspectRatio(1, contentMode: .fit)
     }
 }
 
