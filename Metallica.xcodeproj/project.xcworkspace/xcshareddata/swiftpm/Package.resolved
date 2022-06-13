@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "mpfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MP-iOS-2022/MPFoundation",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fd2692edfe8864c9e4f69fe078f0938ddbc42dd4"
+      }
+    },
+    {
+      "identity" : "mpswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MP-iOS-2022/MPSwiftUI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3ca3a0fe7e8128239f0b68d40011b0b647ffec91"
+      }
+    }
+  ],
+  "version" : 2
+}

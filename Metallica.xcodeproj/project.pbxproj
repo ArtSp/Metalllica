@@ -11,6 +11,8 @@
 		6097243F285707DF00EDCFC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097243E285707DF00EDCFC4 /* ContentView.swift */; };
 		60972441285707E100EDCFC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60972440285707E100EDCFC4 /* Assets.xcassets */; };
 		60972444285707E100EDCFC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60972443285707E100EDCFC4 /* Preview Assets.xcassets */; };
+		6097244C2857081300EDCFC4 /* MPSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6097244B2857081300EDCFC4 /* MPSwiftUI */; };
+		6097244F2857081F00EDCFC4 /* MPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 6097244E2857081F00EDCFC4 /* MPFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6097244F2857081F00EDCFC4 /* MPFoundation in Frameworks */,
+				6097244C2857081300EDCFC4 /* MPSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,10 @@
 			dependencies = (
 			);
 			name = Metallica;
+			packageProductDependencies = (
+				6097244B2857081300EDCFC4 /* MPSwiftUI */,
+				6097244E2857081F00EDCFC4 /* MPFoundation */,
+			);
 			productName = Metallica;
 			productReference = 60972439285707DF00EDCFC4 /* Metallica.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,10 @@
 				Base,
 			);
 			mainGroup = 60972430285707DF00EDCFC4;
+			packageReferences = (
+				6097244A2857081300EDCFC4 /* XCRemoteSwiftPackageReference "MPSwiftUI" */,
+				6097244D2857081F00EDCFC4 /* XCRemoteSwiftPackageReference "MPFoundation" */,
+			);
 			productRefGroup = 6097243A285707DF00EDCFC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,6 +351,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6097244A2857081300EDCFC4 /* XCRemoteSwiftPackageReference "MPSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MP-iOS-2022/MPSwiftUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		6097244D2857081F00EDCFC4 /* XCRemoteSwiftPackageReference "MPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MP-iOS-2022/MPFoundation";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6097244B2857081300EDCFC4 /* MPSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6097244A2857081300EDCFC4 /* XCRemoteSwiftPackageReference "MPSwiftUI" */;
+			productName = MPSwiftUI;
+		};
+		6097244E2857081F00EDCFC4 /* MPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6097244D2857081F00EDCFC4 /* XCRemoteSwiftPackageReference "MPFoundation" */;
+			productName = MPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 60972431285707DF00EDCFC4 /* Project object */;
 }
