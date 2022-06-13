@@ -39,20 +39,25 @@ class MetalView: MTKView {
 
 // MARK: - Renderer
 
-struct Vertex {
-    var position: SIMD3<Float>
-    var color: SIMD4<Float>
-}
-
 class Renderer: NSObject {
     var commandQueue: MTLCommandQueue!
     var renderPipelineState: MTLRenderPipelineState!
-
+    
     var vertexBuffer: MTLBuffer!
-    var vertices: [Vertex] = [
-        Vertex(position: .init(0, 1, 0), color: .init(1, 0, 0, 1)),
-        Vertex(position: .init(-1, -1, 0), color: .init(0, 1, 0, 1)),
-        Vertex(position: .init(1, -1, 0), color: .init(0, 0, 1, 1))
+    var indexBuffer: MTLBuffer!
+
+    var constants = Constants()
+    
+    let indices: [UInt16] = [
+        0, 1, 2,
+        0, 2, 3
+    ]
+    
+    let vertices: [Vertex] = [
+        Vertex(position: .init(1, 1, 0),    color: .init(1, 0, 0, 1)),
+        Vertex(position: .init(-1, 1, 0),   color: .init(0, 1, 0, 1)),
+        Vertex(position: .init(-1, -1, 0),  color: .init(0, 0, 1, 1)),
+        Vertex(position: .init(1, -1, 0),   color: .init(1, 1, 1, 1))
     ]
 
     init(
@@ -88,6 +93,20 @@ class Renderer: NSObject {
         // Attach the shader functions
         renderPipelineDescriptor.vertexFunction = vertexFunction
         renderPipelineDescriptor.fragmentFunction = fragmentFunction
+        
+        let vertexDescriptor = MTLVertexDescriptor()
+        vertexDescriptor.attributes[0].bufferIndex = 0
+        vertexDescriptor.attributes[0].format = .float3
+        vertexDescriptor.attributes[0].offset = 0
+        
+        vertexDescriptor.attributes[1].bufferIndex = 0
+        vertexDescriptor.attributes[1].format = .float4
+        vertexDescriptor.attributes[1].offset = MemoryLayout<SIMD3<Float>>.size
+        
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
+        
+        renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
+        
         // Try to update the state of the renderPipeline
         do {
             renderPipelineState = try device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
@@ -102,6 +121,10 @@ class Renderer: NSObject {
         vertexBuffer = device.makeBuffer(bytes: vertices,
                                          length: MemoryLayout<Vertex>.stride * vertices.count,
                                          options: [])
+        indexBuffer = device.makeBuffer(bytes: indices,
+                                        length: MemoryLayout<UInt16>.size * indices.count,
+                                        options: [])
+        
     }
 }
 
@@ -123,12 +146,18 @@ extension Renderer: MTKViewDelegate {
         let commandBuffer = commandQueue.makeCommandBuffer()
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
         commandEncoder?.setRenderPipelineState(renderPipelineState)
+        
+        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
+        constants.animateBy += deltaTime
+        
         // Pass in the vertexBuffer into index 0
         commandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        commandEncoder?.setVertexBytes(&constants, length: MemoryLayout<Constants>.stride, index: 1)
         // Draw primitive at vertextStart 0
-        commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
-
+        commandEncoder?.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0)
+        
         commandEncoder?.endEncoding()
+        
         commandBuffer?.present(drawable)
         commandBuffer?.commit()
     }

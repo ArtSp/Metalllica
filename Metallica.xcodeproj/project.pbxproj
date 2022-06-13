@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		606B190328574169004355DC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190228574169004355DC /* Types.swift */; };
 		6097243D285707DF00EDCFC4 /* MetallicaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097243C285707DF00EDCFC4 /* MetallicaApp.swift */; };
 		6097243F285707DF00EDCFC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097243E285707DF00EDCFC4 /* ContentView.swift */; };
 		60972441285707E100EDCFC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60972440285707E100EDCFC4 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		606B190228574169004355DC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		60972439285707DF00EDCFC4 /* Metallica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metallica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6097243C285707DF00EDCFC4 /* MetallicaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetallicaApp.swift; sourceTree = "<group>"; };
 		6097243E285707DF00EDCFC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				6097243C285707DF00EDCFC4 /* MetallicaApp.swift */,
 				6097243E285707DF00EDCFC4 /* ContentView.swift */,
 				609724502857094C00EDCFC4 /* MetalView.swift */,
+				606B190228574169004355DC /* Types.swift */,
 				609724522857097C00EDCFC4 /* Shaders.metal */,
 				60972440285707E100EDCFC4 /* Assets.xcassets */,
 				60972442285707E100EDCFC4 /* Preview Content */,
@@ -158,6 +161,7 @@
 				609724532857097C00EDCFC4 /* Shaders.metal in Sources */,
 				609724512857094C00EDCFC4 /* MetalView.swift in Sources */,
 				6097243F285707DF00EDCFC4 /* ContentView.swift in Sources */,
+				606B190328574169004355DC /* Types.swift in Sources */,
 				6097243D285707DF00EDCFC4 /* MetallicaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
