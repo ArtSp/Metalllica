@@ -13,7 +13,7 @@ class BasicScene: CoreScene {
         super.init(device: device)
         
         c = Cube(device: device)
-        c.translate(direction: .init(0, 0, -80))
+        c.position.z = -80
         
         add(child: c)
     }
@@ -22,7 +22,8 @@ class BasicScene: CoreScene {
         commandEncoder: MTLRenderCommandEncoder,
         deltaTime: Float
     ) {
-        c.rotate(angle: deltaTime, axis: .init(1, 0.3, 0.3))
+        c.rotation.x += deltaTime
+        c.rotation.y += deltaTime
         super.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
     }
 }

@@ -8,32 +8,43 @@ import MetalKit
 class Renderer: NSObject {
     
     var commandQueue: MTLCommandQueue!
-    var scenes: [CoreScene] = []
+    var depthStencilState: MTLDepthStencilState!
+    var scene: CoreScene
+    var wireframeFillEnabled = false
     
     init(device: MTLDevice) {
+        scene = BasicScene(device: device)
         super.init()
         
         commandQueue = device.makeCommandQueue()
-        scenes.append(BasicScene(device: device))
+        createDepthStencil(device: device)
+    }
+    
+    func createDepthStencil(device: MTLDevice) {
+        let depthStencilDescriptor = MTLDepthStencilDescriptor()
+        depthStencilDescriptor.isDepthWriteEnabled = true
+        depthStencilDescriptor.depthCompareFunction = .less
+        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
     }
 }
 
 extension Renderer: MTKViewDelegate {
     
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        scene.aspectRatio = Float(view.bounds.width / view.bounds.height)
+    }
 
     func draw(in view: MTKView) {
+        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
+        
         if let drawable = view.currentDrawable,
            let renderPassDescriptor = view.currentRenderPassDescriptor,
            let commandBuffer = commandQueue.makeCommandBuffer(),
            let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) {
+            commandEncoder.setDepthStencilState(depthStencilState)
+            commandEncoder.setTriangleFillMode(wireframeFillEnabled ? .lines : .fill)
             
-            let deltaTime = 1 / Float(view.preferredFramesPerSecond)
-            
-//            commandEncoder.setTriangleFillMode(.lines)
-            scenes.forEach {
-                $0.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
-            }
+            scene.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
             
             commandEncoder.endEncoding()
             commandBuffer.present(drawable)
