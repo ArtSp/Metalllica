@@ -9,6 +9,7 @@ class CoreScene: Node {
     
     var device: MTLDevice!
     var sceneConstants = SceneConstants()
+    var light = Light()
     var aspectRatio: Float = 1
     
     init(device: MTLDevice) {
@@ -26,6 +27,9 @@ class CoreScene: Node {
         commandEncoder.setVertexBytes(&sceneConstants,
                                       length: MemoryLayout<SceneConstants>.stride,
                                       index: 2)
+        commandEncoder.setFragmentBytes(&light,
+                                        length: MemoryLayout<Light>.stride,
+                                        index: 1)
         super.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
     }
 }

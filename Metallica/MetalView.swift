@@ -19,7 +19,7 @@ class MetalView: MTKView {
         colorPixelFormat = .bgra8Unorm
         depthStencilPixelFormat = .depth32Float
         // Our clear color, can be set to any color
-        clearColor = MTLClearColor(red: 0, green: 0.8, blue: 0.3, alpha: 1)
+        clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
         createRenderer(device: defaultDevice)
     }
     
@@ -30,6 +30,18 @@ class MetalView: MTKView {
     func createRenderer(device: MTLDevice) {
         renderer = Renderer(device: device)
         delegate = renderer
+    }
+    
+    override func touchesMoved(
+        _ touches: Set<UITouch>,
+        with event: UIEvent?
+    ) {
+        guard let location = touches.first?.location(in: self) else {
+            renderer.touchPosition = .zero
+            return
+        }
+        renderer.touchPosition.x = Float(location.x)
+        renderer.touchPosition.y = Float(location.y)
     }
     
 }
