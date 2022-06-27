@@ -36,7 +36,9 @@ class Primitive: Node {
     }()
     
     
-    init(device: MTLDevice) {
+    init(
+        device: MTLDevice
+    ) {
         vertexFunctionName = "basic_vertex_function"
         fragmentFunctionName = "basic_fragment_function"
         super.init()
@@ -47,7 +49,9 @@ class Primitive: Node {
     
     func createVerticies() {}
     
-    func createBuffers(device: MTLDevice) {
+    func createBuffers(
+        device: MTLDevice
+    ) {
         vertexBuffer = device.makeBuffer(bytes: vertices,
                                          length: MemoryLayout<Vertex>.stride * vertices.count,
                                          options: [])

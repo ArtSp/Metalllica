@@ -9,6 +9,7 @@ import MetalKit
 
 class MetalView: MTKView {
     var renderer: Renderer!
+    private (set) var wasTouched = false
     
     init() {
         super.init(frame: .zero, device: MTLCreateSystemDefaultDevice())
@@ -19,22 +20,39 @@ class MetalView: MTKView {
         colorPixelFormat = .bgra8Unorm
         depthStencilPixelFormat = .depth32Float
         // Our clear color, can be set to any color
-        clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
+        clearColor = MTLClearColor(red: 1, green: 1, blue: 1, alpha: 1)
         createRenderer(device: defaultDevice)
     }
     
-    required init(coder: NSCoder) {
+    required init(
+        coder: NSCoder
+    ) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createRenderer(device: MTLDevice) {
+    func createRenderer(
+        device: MTLDevice
+    ) {
         renderer = Renderer(device: device)
         delegate = renderer
+    }
+    
+    override func touchesBegan(
+        _ touches: Set<UITouch>,
+        with event: UIEvent?
+    ) {
+        updateTouchesPosition(touches)
     }
     
     override func touchesMoved(
         _ touches: Set<UITouch>,
         with event: UIEvent?
+    ) {
+        updateTouchesPosition(touches)
+    }
+    
+    private func updateTouchesPosition(
+        _ touches: Set<UITouch>
     ) {
         guard let location = touches.first?.location(in: self) else {
             renderer.touchPosition = .zero
@@ -42,6 +60,7 @@ class MetalView: MTKView {
         }
         renderer.touchPosition.x = Float(location.x)
         renderer.touchPosition.y = Float(location.y)
+        wasTouched = true
     }
     
 }

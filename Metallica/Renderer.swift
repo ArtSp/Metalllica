@@ -13,7 +13,9 @@ class Renderer: NSObject {
     var wireframeFillEnabled = false
     var touchPosition: SIMD2<Float> = .zero
     
-    init(device: MTLDevice) {
+    init(
+        device: MTLDevice
+    ) {
         scene = BasicScene(device: device)
         super.init()
         
@@ -21,7 +23,9 @@ class Renderer: NSObject {
         createDepthStencil(device: device)
     }
     
-    func createDepthStencil(device: MTLDevice) {
+    func createDepthStencil(
+        device: MTLDevice
+    ) {
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
         depthStencilDescriptor.isDepthWriteEnabled = true
         depthStencilDescriptor.depthCompareFunction = .less
@@ -31,11 +35,16 @@ class Renderer: NSObject {
 
 extension Renderer: MTKViewDelegate {
     
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    func mtkView(
+        _ view: MTKView,
+        drawableSizeWillChange size: CGSize
+    ) {
         scene.aspectRatio = Float(view.bounds.width / view.bounds.height)
     }
 
-    func draw(in view: MTKView) {
+    func draw(
+        in view: MTKView
+    ) {
         let deltaTime = 1 / Float(view.preferredFramesPerSecond)
         
         if let drawable = view.currentDrawable,
@@ -45,10 +54,7 @@ extension Renderer: MTKViewDelegate {
             commandEncoder.setDepthStencilState(depthStencilState)
             commandEncoder.setTriangleFillMode(wireframeFillEnabled ? .lines : .fill)
             
-            var touch = (view as? MetalView)?.renderer.touchPosition ?? .zero
-            touch.x += Float(view.bounds.width / 2)
-            touch.y += Float(view.bounds.height / 2)
-            scene.light.position = touch
+            scene.light.position = (view as? MetalView)?.renderer.touchPosition ?? .zero
             scene.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
             
             commandEncoder.endEncoding()

@@ -9,7 +9,10 @@ class Triangle: Primitive {
     
     let color: SIMD4<Float>
     
-    init(device: MTLDevice, color: SIMD4<Float>) {
+    init(
+        device: MTLDevice,
+        color: SIMD4<Float>
+    ) {
         self.color = color
         super.init(device: device)
     }

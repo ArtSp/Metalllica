@@ -18,6 +18,13 @@ struct ContentView: View {
             .onUpdateUIView { _, _ in
                 metalUIView.renderer.wireframeFillEnabled = wireframeIsOn
             }
+            .readSize {
+                if !metalUIView.wasTouched {
+                    metalUIView.renderer.touchPosition = .init(Float($0.width / 2), Float($0.height / 2))
+                }
+            }
+            
+            Divider()
             
             HStack {
                 Toggle("Wireframe", isOn: $wireframeIsOn)

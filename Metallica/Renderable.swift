@@ -14,7 +14,9 @@ protocol Renderable {
 }
 
 extension Renderable {
-    func buildPipelineState(device: MTLDevice) -> MTLRenderPipelineState {
+    func buildPipelineState(
+        device: MTLDevice
+    ) -> MTLRenderPipelineState {
         let library = device.makeDefaultLibrary()
         let vertexFunction = library?.makeFunction(name: vertexFunctionName)
         let fragmentFunction = library?.makeFunction(name: fragmentFunctionName)

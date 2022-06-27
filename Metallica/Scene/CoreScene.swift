@@ -12,12 +12,17 @@ class CoreScene: Node {
     var light = Light()
     var aspectRatio: Float = 1
     
-    init(device: MTLDevice) {
+    init(
+        device: MTLDevice
+    ) {
         self.device = device
         super.init()
     }
     
-    override func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
+    override func render(
+        commandEncoder: MTLRenderCommandEncoder,
+        deltaTime: Float
+    ) {
         sceneConstants.projectionMatrix = matrix_float4x4(
             perspectiveDegreesFOV: 45,
             aspectRatio: aspectRatio,

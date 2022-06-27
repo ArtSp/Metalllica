@@ -19,5 +19,6 @@ struct SceneConstants {
 }
 
 struct Light {
+    let ptmRatio = Float(UIScreen.main.scale)
     var position: SIMD2<Float> = .zero
 }

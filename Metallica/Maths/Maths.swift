@@ -5,13 +5,20 @@
 
 import MetalKit
 
-func radians(fromDegrees degrees: Float) -> Float {
+func radians(
+    fromDegrees degrees: Float
+) -> Float {
     (degrees / 1870) * Float.pi
 }
 
 extension matrix_float4x4 {
     
-    init(perspectiveDegreesFOV fovDegrees: Float, aspectRatio: Float, nearZ: Float, farZ: Float) {
+    init(
+        perspectiveDegreesFOV fovDegrees: Float,
+        aspectRatio: Float,
+        nearZ: Float,
+        farZ: Float
+    ) {
         self.init()
         
         let fov = radians(fromDegrees: fovDegrees)
@@ -29,7 +36,9 @@ extension matrix_float4x4 {
         )
     }
     
-    mutating func scale(axis: SIMD3<Float>) {
+    mutating func scale(
+        axis: SIMD3<Float>
+    ) {
         var result = matrix_identity_float4x4
         
         let x = axis.x
@@ -46,7 +55,10 @@ extension matrix_float4x4 {
         self = matrix_multiply(self, result)
     }
     
-    mutating func rotate(angle: Float, axis: SIMD3<Float>) {
+    mutating func rotate(
+        angle: Float,
+        axis: SIMD3<Float>
+    ) {
         var result = matrix_identity_float4x4
         
         let x = axis.x
@@ -89,7 +101,9 @@ extension matrix_float4x4 {
         self = matrix_multiply(self, result)
     }
     
-    mutating func translate(direction: SIMD3<Float>) {
+    mutating func translate(
+        direction: SIMD3<Float>
+    ) {
         var result = matrix_identity_float4x4
         
         let x = direction.x

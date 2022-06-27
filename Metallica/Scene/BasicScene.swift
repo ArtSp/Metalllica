@@ -9,7 +9,9 @@ class BasicScene: CoreScene {
     
     var c: Primitive!
     
-    override init(device: MTLDevice) {
+    override init(
+        device: MTLDevice
+    ) {
         super.init(device: device)
         
         c = Cube(device: device)

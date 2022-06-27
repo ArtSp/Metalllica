@@ -25,6 +25,7 @@ struct SceneConstants {
 };
 
 struct Light {
+    float ptmRatio;
     float2 position;
 };
 
@@ -39,7 +40,7 @@ vertex VertexOut basic_vertex_function(const VertexIn vIn [[ stage_in ]],
 
 fragment half4 basic_fragment_function(VertexOut vIn [[ stage_in ]],
                                         constant Light &ligh [[buffer(1)]]) {
-    float intensity = 1 / length(vIn.position.xy - ligh.position);
+    float intensity = 1 / length(vIn.position.xy - ligh.position * ligh.ptmRatio);
     float4 color = vIn.color * intensity * 50;
     return half4(color.x, color.y, color.z, 1);
 }

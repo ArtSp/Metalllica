@@ -22,7 +22,9 @@ class Node {
         return modelMatrix
     }
 
-    func add(child: Node) {
+    func add(
+        child: Node
+    ) {
         children.append(child)
     }
     
