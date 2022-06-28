@@ -9,7 +9,6 @@ import MetalKit
 
 class MetalView: MTKView {
     var renderer: Renderer!
-    private (set) var wasTouched = false
     
     init() {
         super.init(frame: .zero, device: MTLCreateSystemDefaultDevice())
@@ -54,13 +53,11 @@ class MetalView: MTKView {
     private func updateTouchesPosition(
         _ touches: Set<UITouch>
     ) {
-        guard let location = touches.first?.location(in: self) else {
-            renderer.touchPosition = .zero
-            return
-        }
-        renderer.touchPosition.x = Float(location.x)
-        renderer.touchPosition.y = Float(location.y)
-        wasTouched = true
+        guard let location = touches.first?.location(in: self) else { return }
+        InputHandler.touchLocation = location
+        
+        renderer.scene.camera.rotation.y = Float(-location.x / bounds.width / 50)
+        renderer.scene.camera.rotation.x = Float(-location.y / bounds.height / 50)
     }
     
 }

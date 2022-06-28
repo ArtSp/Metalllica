@@ -11,7 +11,6 @@ class Renderer: NSObject {
     var depthStencilState: MTLDepthStencilState!
     var scene: CoreScene
     var wireframeFillEnabled = false
-    var touchPosition: SIMD2<Float> = .zero
     
     init(
         device: MTLDevice
@@ -39,7 +38,7 @@ extension Renderer: MTKViewDelegate {
         _ view: MTKView,
         drawableSizeWillChange size: CGSize
     ) {
-        scene.aspectRatio = Float(view.bounds.width / view.bounds.height)
+        scene.camera.aspectRatio = Float(view.bounds.width / view.bounds.height)
     }
 
     func draw(
@@ -54,7 +53,11 @@ extension Renderer: MTKViewDelegate {
             commandEncoder.setDepthStencilState(depthStencilState)
             commandEncoder.setTriangleFillMode(wireframeFillEnabled ? .lines : .fill)
             
-            scene.light.position = (view as? MetalView)?.renderer.touchPosition ?? .zero
+            let lightPos: SIMD2<Float> = .init(
+                Float(InputHandler.touchLocation?.x ?? InputHandler.defaultTouchLocation?.x ?? 0),
+                Float(InputHandler.touchLocation?.y ?? InputHandler.defaultTouchLocation?.y ?? 0)
+            )
+            scene.light.position = lightPos
             scene.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
             
             commandEncoder.endEncoding()

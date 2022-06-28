@@ -30,13 +30,12 @@ class Node {
     
     func render(
         commandEncoder: MTLRenderCommandEncoder,
-        deltaTime: Float
+        parentModelMatrix: matrix_float4x4
     ) {
-        children
-            .forEach { node in
-            node.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
+        children.forEach { node in
+            node.render(commandEncoder: commandEncoder, parentModelMatrix: parentModelMatrix)
         }
-        
-        (self as? Renderable)?.draw(commandEncoder: commandEncoder)
+        let modelViewMatrix = matrix_multiply(parentModelMatrix, modelMatrix)
+        (self as? Renderable)?.draw(commandEncoder: commandEncoder, modelViewMatrix: modelViewMatrix)
     }
 }
