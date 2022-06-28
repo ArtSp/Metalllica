@@ -53,11 +53,7 @@ class MetalView: MTKView {
     private func updateTouchesPosition(
         _ touches: Set<UITouch>
     ) {
-        guard let location = touches.first?.location(in: self) else { return }
-        InputHandler.touchLocation = location
-        
-        renderer.scene.camera.rotation.y = Float(-location.x / bounds.width / 50)
-        renderer.scene.camera.rotation.x = Float(-location.y / bounds.height / 50)
+        InputHandler.touchLocation = touches.first?.location(in: self)
     }
     
 }

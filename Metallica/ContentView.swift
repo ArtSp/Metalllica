@@ -22,6 +22,8 @@ struct ContentView: View {
             case .right: return "chevron.right"
             case .down: return "chevron.down"
             case .up: return "chevron.up"
+            case .forward: return "arrow.up"
+            case .backward: return "arrow.down"
             default: fatalError("Unexpected")
             }
         }()
@@ -56,6 +58,10 @@ struct ContentView: View {
                     controlButton(key: .down)
                 }
                 controlButton(key: .right)
+                VStack(spacing: 10) {
+                    controlButton(key: .forward)
+                    controlButton(key: .backward)
+                }
             }
             
             HStack {

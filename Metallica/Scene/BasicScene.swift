@@ -34,23 +34,33 @@ class BasicScene: CoreScene {
         c1.rotation.x += deltaTime
         c1.rotation.y += deltaTime
         
-        let cameraSpeed: Float = 0.1
-        let node: Node = c1
+        let moveSpeed: Float = 0.05
+        let rotationSpeed: Float = 0.001
+        
+        let node: Node = camera
+        
+        if InputHandler.pressedKeys.contains(.forward) {
+            node.position.z += moveSpeed * 10
+        }
+        
+        if InputHandler.pressedKeys.contains(.backward) {
+            node.position.z -= moveSpeed * 10
+        }
         
         if InputHandler.pressedKeys.contains(.up) {
-            node.position.z -= 1
+            node.rotation.x -= rotationSpeed
         }
         
         if InputHandler.pressedKeys.contains(.down) {
-            node.position.z += 1
+            node.rotation.x += rotationSpeed
         }
         
         if InputHandler.pressedKeys.contains(.left) {
-            node.position.x -= cameraSpeed
+            node.rotation.y -= rotationSpeed
         }
         
         if InputHandler.pressedKeys.contains(.right) {
-            node.position.x += cameraSpeed
+            node.rotation.y += rotationSpeed
         }
 
         super.render(commandEncoder: commandEncoder, deltaTime: deltaTime)

@@ -18,5 +18,7 @@ enum InputHandler {
         static let down   = InputKey(rawValue: 1 << 1)
         static let right  = InputKey(rawValue: 1 << 2)
         static let left   = InputKey(rawValue: 1 << 3)
+        static let forward = InputKey(rawValue: 1 << 4)
+        static let backward = InputKey(rawValue: 1 << 5)
     }
 }
