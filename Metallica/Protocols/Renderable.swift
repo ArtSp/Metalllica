@@ -8,8 +8,10 @@ import MetalKit
 protocol Renderable {
     var renderPipelineState: MTLRenderPipelineState! { get set }
     var vertexDescriptor: MTLVertexDescriptor! { get set }
-    var fragmentFunctionName: String { get set }
+    
+    var fragmentFunctionName: String! { get set }
     var vertexFunctionName: String { get set }
+    
     func draw(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4)
 }
 

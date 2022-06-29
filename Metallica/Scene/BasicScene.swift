@@ -15,7 +15,7 @@ class BasicScene: CoreScene {
     ) {
         super.init(device: device)
         
-        c1 = Cube(device: device)
+        c1 = Cube(device: device, imageName: "insta.jpeg")
         c1.position.x = 0.5
         c1.position.z = -80
         

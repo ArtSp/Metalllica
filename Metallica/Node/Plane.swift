@@ -11,10 +11,10 @@ class Plane: Primitive {
         super.createVerticies()
         
         vertices = [
-            Vertex(position: .init(1, 1, 0),    color: .init(1, 0, 0, 1)),
-            Vertex(position: .init(-1, 1, 0),   color: .init(0, 1, 0, 1)),
-            Vertex(position: .init(-1, -1, 0),  color: .init(0, 0, 1, 1)),
-            Vertex(position: .init(1, -1, 0),   color: .init(1, 1, 1, 1))
+            Vertex(position: SIMD3<Float>( 1,  1, 0), color: SIMD4<Float>(1, 0 ,0, 1), textCoords: SIMD2<Float>(1,1)), //v0
+            Vertex(position: SIMD3<Float>(-1,  1, 0), color: SIMD4<Float>(0, 1, 0 ,1), textCoords: SIMD2<Float>(0,1)), //v1
+            Vertex(position: SIMD3<Float>(-1, -1, 0), color: SIMD4<Float>(0, 0, 1, 1), textCoords: SIMD2<Float>(0,0)), //v2
+            Vertex(position: SIMD3<Float>( 1, -1, 0), color: SIMD4<Float>(1, 0, 1, 1), textCoords: SIMD2<Float>(1,0)), //v3
         ]
         
         indices = [

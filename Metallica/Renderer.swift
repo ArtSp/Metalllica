@@ -9,6 +9,7 @@ class Renderer: NSObject {
     
     var commandQueue: MTLCommandQueue!
     var depthStencilState: MTLDepthStencilState!
+    var samplerState: MTLSamplerState!
     var scene: CoreScene
     var wireframeFillEnabled = false
     
@@ -20,6 +21,7 @@ class Renderer: NSObject {
         
         commandQueue = device.makeCommandQueue()
         createDepthStencil(device: device)
+        createSamplerState(device: device)
     }
     
     func createDepthStencil(
@@ -29,6 +31,15 @@ class Renderer: NSObject {
         depthStencilDescriptor.isDepthWriteEnabled = true
         depthStencilDescriptor.depthCompareFunction = .less
         depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
+    }
+    
+    func createSamplerState(
+        device: MTLDevice
+    ){
+        let samplerDescriptor = MTLSamplerDescriptor()
+        samplerDescriptor.minFilter = .linear
+        samplerDescriptor.magFilter = .linear
+        samplerState = device.makeSamplerState(descriptor: samplerDescriptor)
     }
 }
 
@@ -51,6 +62,7 @@ extension Renderer: MTKViewDelegate {
            let commandBuffer = commandQueue.makeCommandBuffer(),
            let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) {
             commandEncoder.setDepthStencilState(depthStencilState)
+            commandEncoder.setFragmentSamplerState(samplerState, index: 0)
             commandEncoder.setTriangleFillMode(wireframeFillEnabled ? .lines : .fill)
             
             let lightPos: SIMD2<Float> = .init(
