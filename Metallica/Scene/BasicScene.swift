@@ -7,8 +7,8 @@ import MetalKit
 
 class BasicScene: CoreScene {
     
-    var c1: Primitive!
-    var c2: Primitive!
+    var c1: Node!
+    var c2: Node!
     
     override init(
         device: MTLDevice
@@ -16,15 +16,23 @@ class BasicScene: CoreScene {
         super.init(device: device)
         
         c1 = Cube(device: device, imageName: "insta.jpeg")
-        c1.position.x = 0.5
-        c1.position.z = -80
+        c1.position.x = 1
+        c1.position.z = -20
         
-        c2 = Cube(device: device)
-        c2.position.x = -0.5
-        c2.position.z = -90
+//        c2 = Cube(device: device, imageName: "mp.png")
+//        c2.position.x = -1
+//        c2.position.z = -30
+        
+        c2 = Model(device: device, modelName: "f16", imageName: "mp.png")
+        c2.position.x = -1
+        c2.position.z = -30
+        
+        let c3 = Cube(device: device)
+        c3.position.z = -40
         
         add(child: c1)
         add(child: c2)
+        add(child: c3)
     }
     
     override func render(
@@ -33,6 +41,9 @@ class BasicScene: CoreScene {
     ) {
         c1.rotation.x += deltaTime
         c1.rotation.y += deltaTime
+        
+        c2.rotation.x -= deltaTime / 2
+        c2.rotation.y -= deltaTime / 2
         
         let moveSpeed: Float = 0.05
         let rotationSpeed: Float = 0.001

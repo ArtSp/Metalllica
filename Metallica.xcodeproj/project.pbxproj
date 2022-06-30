@@ -12,6 +12,9 @@
 		60626855286AD85E00ADC976 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60626854286AD85E00ADC976 /* InputHandler.swift */; };
 		60626858286C78FE00ADC976 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60626857286C78FE00ADC976 /* Texturable.swift */; };
 		6062685B286C83F700ADC976 /* insta.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6062685A286C83F700ADC976 /* insta.jpeg */; };
+		60626862286D762A00ADC976 /* mp.png in Resources */ = {isa = PBXBuildFile; fileRef = 60626861286D762A00ADC976 /* mp.png */; };
+		60626887286DC1D000ADC976 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60626886286DC1D000ADC976 /* Model.swift */; };
+		60626889286DCEF800ADC976 /* f16.obj in Resources */ = {isa = PBXBuildFile; fileRef = 60626888286DCEF800ADC976 /* f16.obj */; };
 		606B190328574169004355DC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190228574169004355DC /* Types.swift */; };
 		606B190528574BF9004355DC /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190428574BF9004355DC /* Node.swift */; };
 		606B190728574CED004355DC /* CoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190628574CED004355DC /* CoreScene.swift */; };
@@ -37,6 +40,9 @@
 		60626854286AD85E00ADC976 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
 		60626857286C78FE00ADC976 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		6062685A286C83F700ADC976 /* insta.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = insta.jpeg; sourceTree = "<group>"; };
+		60626861286D762A00ADC976 /* mp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp.png; sourceTree = "<group>"; };
+		60626886286DC1D000ADC976 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		60626888286DCEF800ADC976 /* f16.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = f16.obj; sourceTree = "<group>"; };
 		606B190228574169004355DC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		606B190428574BF9004355DC /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		606B190628574CED004355DC /* CoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreScene.swift; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				606B190428574BF9004355DC /* Node.swift */,
+				60626886286DC1D000ADC976 /* Model.swift */,
 				6062683728699EF500ADC976 /* Camera.swift */,
 				606B190C2857529C004355DC /* Primitive.swift */,
 				606B190A28574D79004355DC /* Plane.swift */,
@@ -135,7 +142,9 @@
 				606B190228574169004355DC /* Types.swift */,
 				606B190E2857564E004355DC /* Renderer.swift */,
 				60626854286AD85E00ADC976 /* InputHandler.swift */,
+				60626888286DCEF800ADC976 /* f16.obj */,
 				6062685A286C83F700ADC976 /* insta.jpeg */,
+				60626861286D762A00ADC976 /* mp.png */,
 				60626859286C799E00ADC976 /* Protocols */,
 				60972440285707E100EDCFC4 /* Assets.xcassets */,
 				60972442285707E100EDCFC4 /* Preview Content */,
@@ -218,7 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				60972444285707E100EDCFC4 /* Preview Assets.xcassets in Resources */,
+				60626889286DCEF800ADC976 /* f16.obj in Resources */,
 				6062685B286C83F700ADC976 /* insta.jpeg in Resources */,
+				60626862286D762A00ADC976 /* mp.png in Resources */,
 				60972441285707E100EDCFC4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +250,7 @@
 				60626858286C78FE00ADC976 /* Texturable.swift in Sources */,
 				606B190D2857529C004355DC /* Primitive.swift in Sources */,
 				606B190528574BF9004355DC /* Node.swift in Sources */,
+				60626887286DC1D000ADC976 /* Model.swift in Sources */,
 				606B190728574CED004355DC /* CoreScene.swift in Sources */,
 				606B190328574169004355DC /* Types.swift in Sources */,
 				60626855286AD85E00ADC976 /* InputHandler.swift in Sources */,
