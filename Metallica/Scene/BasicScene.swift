@@ -7,46 +7,49 @@ import MetalKit
 
 class BasicScene: CoreScene {
     
-    var c1: Node!
-    var c2: Node!
+    var instaCube: Node!
+    var jet: Node!
     
     override init(
         device: MTLDevice
     ) {
         super.init(device: device)
         
-        c1 = Cube(device: device, imageName: "insta.jpeg")
-        c1.position.x = 1
-        c1.position.z = -20
+        instaCube = Cube(device: device, imageName: "insta.jpeg")
+        instaCube.position.x = 1
+        instaCube.position.y = -1
+        instaCube.position.z = -20
         
-//        c2 = Cube(device: device, imageName: "mp.png")
-//        c2.position.x = -1
-//        c2.position.z = -30
+        jet = Model(device: device, modelName: "f16", imageName: "mp.png")
+        jet.position.x = -1
+        jet.position.y = 2
+        jet.position.z = -30
         
-        c2 = Model(device: device, modelName: "f16", imageName: "mp.png")
-        c2.position.x = -1
-        c2.position.z = -30
+        let planes = Instance(device: device, modelName: "f16", imageName: "insta.jpeg", instanceCount: 1000)
+        for i in planes.nodes.indices {
+            planes.nodes[i].position.x = 3 * Float(i)
+            planes.nodes[i].position.z = -50
+            planes.nodes[i].rotation.y = 0.2 * Float(i)
+            planes.nodes[i].rotation.x = 0.2 * Float(i)
+        }
         
-        let c3 = Cube(device: device)
-        c3.position.z = -40
-        
-        add(child: c1)
-        add(child: c2)
-        add(child: c3)
+        add(child: instaCube)
+        add(child: jet)
+        add(child: planes)
     }
     
     override func render(
         commandEncoder: MTLRenderCommandEncoder,
         deltaTime: Float
     ) {
-        c1.rotation.x += deltaTime
-        c1.rotation.y += deltaTime
+        instaCube.rotation.x += deltaTime
+        instaCube.rotation.y += deltaTime
         
-        c2.rotation.x -= deltaTime / 2
-        c2.rotation.y -= deltaTime / 2
+        jet.rotation.x -= deltaTime / 2
+        jet.rotation.y -= deltaTime / 2
         
         let moveSpeed: Float = 0.05
-        let rotationSpeed: Float = 0.001
+        let rotationSpeed: Float = 0.002
         
         let node: Node = camera
         

@@ -19,7 +19,7 @@ struct VertexOut {
 };
 
 struct ModelConstants {
-    float4x4 modelViewMatrics;
+    float4x4 modelViewMatrix;
 };
 
 struct SceneConstants {
@@ -35,7 +35,20 @@ vertex VertexOut basic_vertex_function(const VertexIn vIn [[ stage_in ]],
                                        constant ModelConstants &modelConstants [[ buffer(1)]],
                                        constant SceneConstants &sceneConstants [[ buffer(2)]]) {
     VertexOut vOut;
-    vOut.position = sceneConstants.projectionMatrix * modelConstants.modelViewMatrics * float4(vIn.position, 1);
+    vOut.position = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix * float4(vIn.position, 1);
+    vOut.color = vIn.color;
+    vOut.textCoords = vIn.textCoords;
+    return vOut;
+}
+
+vertex VertexOut instance_vertex_function(const VertexIn vIn [[ stage_in ]],
+                                          constant ModelConstants *instances [[ buffer(1) ]],
+                                          constant SceneConstants &sceneConstants [[ buffer(2) ]],
+                                          uint instanceID [[ instance_id ]]){
+    
+    ModelConstants modelConstants = instances[instanceID];
+    VertexOut vOut;
+    vOut.position = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix * float4(vIn.position, 1);
     vOut.color = vIn.color;
     vOut.textCoords = vIn.textCoords;
     return vOut;

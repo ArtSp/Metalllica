@@ -15,6 +15,7 @@
 		60626862286D762A00ADC976 /* mp.png in Resources */ = {isa = PBXBuildFile; fileRef = 60626861286D762A00ADC976 /* mp.png */; };
 		60626887286DC1D000ADC976 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60626886286DC1D000ADC976 /* Model.swift */; };
 		60626889286DCEF800ADC976 /* f16.obj in Resources */ = {isa = PBXBuildFile; fileRef = 60626888286DCEF800ADC976 /* f16.obj */; };
+		6062688B286EC6DA00ADC976 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062688A286EC6DA00ADC976 /* Instance.swift */; };
 		606B190328574169004355DC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190228574169004355DC /* Types.swift */; };
 		606B190528574BF9004355DC /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190428574BF9004355DC /* Node.swift */; };
 		606B190728574CED004355DC /* CoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606B190628574CED004355DC /* CoreScene.swift */; };
@@ -43,6 +44,7 @@
 		60626861286D762A00ADC976 /* mp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp.png; sourceTree = "<group>"; };
 		60626886286DC1D000ADC976 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		60626888286DCEF800ADC976 /* f16.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = f16.obj; sourceTree = "<group>"; };
+		6062688A286EC6DA00ADC976 /* Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
 		606B190228574169004355DC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		606B190428574BF9004355DC /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		606B190628574CED004355DC /* CoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreScene.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				606B190428574BF9004355DC /* Node.swift */,
 				60626886286DC1D000ADC976 /* Model.swift */,
+				6062688A286EC6DA00ADC976 /* Instance.swift */,
 				6062683728699EF500ADC976 /* Camera.swift */,
 				606B190C2857529C004355DC /* Primitive.swift */,
 				606B190A28574D79004355DC /* Plane.swift */,
@@ -250,6 +253,7 @@
 				60626858286C78FE00ADC976 /* Texturable.swift in Sources */,
 				606B190D2857529C004355DC /* Primitive.swift in Sources */,
 				606B190528574BF9004355DC /* Node.swift in Sources */,
+				6062688B286EC6DA00ADC976 /* Instance.swift in Sources */,
 				60626887286DC1D000ADC976 /* Model.swift in Sources */,
 				606B190728574CED004355DC /* CoreScene.swift in Sources */,
 				606B190328574169004355DC /* Types.swift in Sources */,
@@ -465,8 +469,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MP-iOS-2022/MPSwiftUI";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		6097244D2857081F00EDCFC4 /* XCRemoteSwiftPackageReference "MPFoundation" */ = {
